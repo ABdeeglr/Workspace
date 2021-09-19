@@ -1,0 +1,91 @@
+\documentclass{article}
+\usepackage{geometry}
+\geometry{a4paper}
+\usepackage{ctex}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{tikz-cd}
+\usepackage{ytableau}
+\usepackage[all]{xy}
+\setcounter{section}{0}
+
+
+\pagestyle{plain}
+\marginparwidth    0pt
+\oddsidemargin     45pt
+\evensidemargin    45pt
+\topmargin         0pt
+\textheight       21cm
+\textwidth         13.5cm
+
+\newtheorem{exer}{习题}[section]
+
+
+\title{求导练习}
+\author{Liu Xinyi}
+\date{\today}
+
+
+
+\begin{document}
+    
+\maketitle
+
+\section{基础练习}
+
+\begin{exer}
+    设函数$f$在$x=0$处可导,且$f(0)=0$.求极限
+    $$
+    \lim_{x\to 0}\frac{f(x)}{x}.\\
+    $$
+\end{exer}
+\vspace*{80pt}
+
+
+\begin{exer}
+    设函数$f$在$x=0$处可导,且$a_n\to 0^-,b_n \to 0^+(n\to +\infty)$.证明:
+    $$
+    \lim_{n\to \infty}\frac{f(b_n)-f(a_n)}{b_n-a_n}=f'(0).\\
+    $$
+\end{exer}
+\vspace*{80pt}
+
+\begin{exer}
+    设$f$是偶函数且在$x=0$可导.证明:$f'(0)=0$.\\
+\end{exer}
+\vspace*{80pt}
+
+\begin{exer}
+    设函数$f$在$x_0$可导,证明:
+    $$
+    \lim_{h\to 0}\frac{f(x_0+h)-f(x_0-h)}{2h}=f'(x_0).\\
+    $$
+\end{exer}
+\vspace*{80pt}
+
+\begin{exer}
+    设函数$f$在$x=a$可导,且$f(a)\neq 0$.求数列极限
+    $$
+    \lim_{n\to\infty}(\frac{f(a+\frac1n)}{f(a)})^n.\\
+    $$
+\end{exer}
+\vspace*{80pt}
+
+\begin{exer}
+    设$f(x)=x(x-1)^2(x-2)^3$.求$f'(0),f'(1),f'(2)$.\\
+\end{exer}
+\vspace*{80pt}
+
+\begin{exer}
+    尝试构造一个函数f,它在$(-\infty,+\infty)$上处处不可导,但
+    $$
+    \lim_{n\to \infty}n(f(x+\frac1n)-f(x))
+    $$
+    处处存在.\\
+\end{exer}
+\vspace*{80pt}
+
+\end{document}

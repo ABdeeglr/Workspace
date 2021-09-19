@@ -1,0 +1,287 @@
+\documentclass{ctexart}
+\title{Introduction to Linear Algebra\\ 第一线性代数理论（线性空间基础）}
+\author{Liu Xinyi}
+\date{\today}
+\usepackage{lipsum}
+\usepackage{CJKutf8}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem*{definition*}{Definition}
+% --**--以上为头文件--**--%
+
+
+
+\begin{document}
+
+\maketitle
+\begin{abstract}
+    从代数向量的运算规律中，我们抽象出了向量加法与向量的标量乘法的规律，由此我们定义出了抽象的向量空间和向量，从而在根本上解决了向量是什么的问题.
+
+    随后，我们基于简单的线性伸缩，提出了子空间的概念. 在这里，涉及到了一个证明向量空间若干问题的关键技术工具——张成. 详细地介绍张成和张成空间的性质是有益的. 并且基于张成这一表达，我们可以对向量空间这一基本概念进行划分，从而分为有限维向量空间和无限维向量空间.
+
+    为了深入研究有限维向量空间的性质，我们就需要考察该向量空间的张成组的性质，从而引入了描述向量组的一系列概念——线性相关、线性无关——和技术手段——筛法. 最终，结合线性无关和张成这两个概念，我们提出了基的概念. 
+
+    有了基以后，向量空间中的任何一个向量都可以被这个基唯一的线性表示. 但问题也随之而来，同一个向量空间的基，它们之间有何特性，是否有内在不变的性质？这就引出了维数的概念. 
+\end{abstract}
+\newpage
+
+\section{Finite-dimensional Vector Space}
+
+% --**--第一章--**--%
+\subsection{The Definition of Vecotr Space}
+
+\textbf{提要}
+\begin{enumerate}
+    \item 向量空间和向量的定义;
+    \item 构造向量空间的常用方式;
+    \item 子空间的定义.
+\end{enumerate}
+
+
+
+\noindent 如果读者对以下的关于向量空间的定义感到不自然，有人工雕琢之感，请先不必往下读. 以下的定义是自然的，建立在对着已经对现代数学的定义有较深入的感受，所以若读者自然而然地接受定义的话，请先阅读附录，我在附录中解释了这种定义方式的思想根源.\\
+
+
+\begin{definition}
+    加法、标量乘法
+
+    集合$V$上的加法运算是一个函数,使$V\times V$中的一个元素对$(u,v)$对应到$V$中的一个元素$u+v$.
+        \begin{align*}
+            f:V\times V \to V\\
+            (u,v) \to u+v
+        \end{align*}
+    
+    集合$V$上的标量乘法运算是一个函数,它把任意$\lambda \in \mathbf{F}$和$v\in V$组成的元素对$(\lambda,v)$对应到$V$中的一个元素$\lambda v$.
+        \begin{align*}
+            f:V\times \mathbf{F} \to V\\
+            (\lambda,v) \to \lambda v
+        \end{align*}
+\end{definition}
+
+\noindent 上述的定义是关于代数运算的定义，代数运算在本质上是一种二元函数，并且其值域也通常是确定的.
+
+\newpage
+\begin{definition}
+    如果一个集合$V$和数域$\mathbf{F}$上具有加法和标量乘法两种运算,并且满足以下性质，则称$V$是向量空间，$V$中的元素称为向量.
+    \begin{enumerate}
+        \item 对任意$u,v\in V$,$u+v=v+u$;
+        \item 对任意的$u,v,w\in V$和$a,b\in \mathbf{F}$;
+        \item 存在元素$0\in V$,使得任意$v\in V$都$v+0=0+v=v$;
+        \item 对任意$v\in V$,存在$w\in V$,使得$v+w=0$;
+        \item 对任意$v\in V$,存在$1\in \mathbf{F}$,使得$1\dot v=v$;
+        \item 对任意$a,b\in \mathbf{F}$和$u,v\in V$,有$a(u+v)=au+av,(a+b)v=av+bv$.
+    \end{enumerate}
+\end{definition}
+
+\noindent 向量空间中的元素不一定是代数向量，也可能是函数，或者其他稀奇古怪的东西.\\
+
+\noindent 以下是一些向量空间的例子:
+
+\noindent 1.代数向量空间$\mathbf{R}^4$，其中的元素是形如$(1,2,3,4)$的代数向量.
+
+\noindent 2.定义域为$\mathbf{P}$,值域为$\mathbf{Q}$的全体函数的集合$Hom(P,Q)$.\\
+
+\noindent 类似于集合有子集，向量空间也有子向量空间的概念. 假设$V$是数域$\mathbf{F}$上的向量空间,利用向量$v\in V$,可以构造出集合$W=\{\lambda v|\lambda \in \mathbf{F}\}$. 这样的集合$W$一定是$V$的子集,并且容易验证$W$是数域$\mathbf{F}$的向量空间. 集合$W$的性质,给出了向量空间的子空间的定义.
+
+\begin{definition}
+    设$V$是数域$\mathbf{F}$上的向量空间,$W$是$V$的一个子集,如果$W$也是数域$\mathbf{F}$上的向量空间,则称$W$是$V$的子空间.
+\end{definition}
+
+\newpage
+
+
+
+
+
+
+
+% --**--第二章--**--%
+\subsection{Span}
+\textbf{提要}
+\begin{enumerate}
+    \item 线性组合，张成空间，张成；
+    \item 有限维向量空间的定义；
+    \item 线性无关和线性相关；
+    \item 如果一个向量可以被另一组向量线性表示，则该向量在其张成空间中.\\
+\end{enumerate}
+
+\subsubsection{线性组合与张成空间}
+
+\noindent 在前文构造向量空间的子空间的例子中,我们实际上得到了一种用于研究向量空间的基本工具,接下来就正式介绍这一点.
+
+\begin{definition}
+    某个向量组$v_1,v_2,\cdots,\v_n$的\textbf{线性组合}是形如
+    \[a_1v_1+a_2v_2+\cdots+a_nv_n\]
+    的向量.\\
+\end{definition}
+
+\noindent 例如:$\alpha_1+\alpha_2$是$\alpha_1,\alpha_2$的线性组合;
+
+$5\beta$是$\beta$的线性组合;
+
+$(1,2,5)$是$(1,1,3),(0,1,2)$的西线性组合;\\
+
+\noindent 一般而言,如果向量$\beta$是向量组$\alpha_1,\alpha_2,\cdots,\alpha_n$的线性组合,我们也说$\beta$可以被向量组$\alpha_1,\alpha_2,\cdots,\alpha_n$\textbf{线性表示}.\\
+
+\noindent 对于某个向量组而言,其线性组合并不只有一种,因此有必要将所有的线性组合放在同一个集合里,这样就得到了张成空间的概念.
+
+\begin{definition}
+    设$v_1,v_2,\cdots,v_n$是$V$中的一组向量,则称集合$\{k_1v_1+k_2v_2+\cdots+k_nv_n \quad| \quad k_1,l_2\cdots \in \mathbf{F}\}$是向量组$v_1,v_2,\cdots,v_n$的张成空间,记作$\mathbf{L}(v_1,v_2,,\cdots,v_n)$或者$\mbox{span}(v_1,v_2,\cdots,v_n)$.\\
+\end{definition}
+
+\noindent 张成空间总是向量空间,一个向量可以被另一个向量组线性表示等价于该向量属于该向量组张成的空间.这两个推论容易验证,因此略去证明.读者可以自行尝试,或者意识到可以这样推论即可.
+
+\begin{corollary}
+    $\alpha_1,\alpha_2,\cdots,\alpha)n$是一个向量组,其张成空间是向量空间.
+\end{corollary}
+
+\begin{corollary}
+    向量$\beta$是向量组$\alpha_1,\alpha_2,\cdots,\alpha_n$的线性组合,当且仅当$\beta \in \mbox{span}(\alpha_1,\alpha_2,\cdots,\alpha_n)$.\\
+\end{corollary}
+
+\noindent 在不同的语境下,对于向量组$v_1,v_2,\cdots,v_n$和向量空间$W$,如果$W=\mbox{span}(v_1,v_2,\cdots,v_n)$,就可以说$v_1,v_2,\cdots,v_n$\textbf{张成}了向量空间$W$,或者$v_1,v_1,\cdots,v_n$是$W$的\textbf{张成组}.\\
+
+\noindent 另外,张成空间或张成组的概念第一次对向量空间作出了细节性的区分:
+
+\begin{definition}
+    如果一个向量空间具有有限个向量的张成组,则称该向量空间是有限维向量空间.
+\end{definition}
+
+\noindent 之所以作出这样的区分,是因为我们在接下来就能够证明,具有有限长度的张成组的向量空间总是可以进一步简化,从而得到一种特定长度的向量组,这个长度是重要的,被称为向量空间的维数.然而对于无限维向量空间,我们不可能找到一个有限的向量组来张成它.\\
+
+
+\subsubsection{刻画向量组的工具——线性无关}
+
+\noindent 我们很快能意识到同一个向量空间可以具有不同的张成组,比如对$\mathbf{R}^3$而言,
+\begin{enumerate}
+    \item $(1,0,0),(0,1,0),(0,0,1)$,
+    \item $(1,2,3),(2,3,4),(3,4,5)$,
+    \item $(1,0,0),(0,2,0),(0,0,3),(1,2,3)$
+\end{enumerate}
+都可以作为$\mathbf{R}^3$的张成组.因此就有必要提出问题,是否存在一种评价标准,来判断哪一个张成组更好,如果有的话,这些标准在数学形式上有何意义？\\
+
+\noindent 建立这种标准的第一想法,是希望线性组合具有唯一性.具体来说,对于一个向量空间$V$和它的张成组$v_1,v_2,\cdots,v_m$,我们希望$V$中的任何一个向量,都可以被$v_1,v_2,\cdots,v_m$唯一地表示出来.
+
+\noindent 这意味着在数学语言，对任意向量$\beta \in V$,如果它有两种线性组合
+\begin{align*}
+    \beta=a_1v_1+a_2v_2+\cdots+a_mv_m\\
+    \beta=b_1v_1+b_2v_2+\cdots+b_mv_m
+\end{align*}
+则有$a_1=b_1,a_2=b_2,\cdots,a_m=v_m$成立.\\
+
+\noindent 我们进一步推进这一想法,发现可以将两式相减,得到零向量的线性组合表达式:
+\begin{align*}
+    \mathbf{0}=(a_1-b_1)v_1+(a_2-b_2)v_2+\cdots+(a_m-b_m)v_m
+\end{align*}
+\noindent 最终我们意识到,如果任意向量都有唯一的线性组合方式,这种唯一性带来的结果就是$\mathbf{0}$向量的线性组合的系数一定均为零. 我们把这样的情况总结成一个描述向量组特征的概念:
+\begin{definition}
+    向量组$v_1,v_2,\cdots,v_n$是\textbf{线性无关}的，如果不存在不全为零的数$k_1,k_2,\cdots,k_n \in \mathbf{F}$使得
+    \begin{align*}
+        \mathbf{0}=k_1v_1+k_2v_2+\cdots+k_nv_n.
+    \end{align*}
+    相应的,如果存在不全为零的一组数$k_1,k_2,\cdots,k_n$使得
+    \begin{align*}
+        \mathbf{0}=k_1v_1+k_2v_2+\cdots+k_nv_n
+    \end{align*}
+    成立,则称$v_1,v_2,\cdots,v_n$是\textbf{线性相关}的. 特别地,称空组$()$是线性无关的.\\
+\end{definition}
+
+\noindent 下面的定理总结了前面的分析和提出新概念的过程,将张成组的线性相关与否和张成空间中的元素的线性组合是否具有唯一性联系在一起. 此外,这一定理的证明过程也展示了如何使用线性无关这一概念.
+
+\begin{theorem}% 这一定理有点问题……
+    设向量空间$V$的张成组是$v_1,v_2,\cdots,v_n$,$V$中的向量可以被$v_1,v_2,\cdots,v_n$唯一地线性表示的充要条件是该张成组线性无关.
+\end{theorem}
+
+\begin{proof}
+
+    \noindent 充分性:设向量$\beta \in V$具有两种线性组合
+    \begin{align*}
+        \beta=a_1v_1+a_2v_2+\cdots+a_nv_n\\
+        \beta=b_1v_1+b_2v_2+\cdots+b_nv_n
+    \end{align*}
+        两式相减得$\mathbf{0}=(a_1-b_1)v_1+(a_2-b_2)v_2+\cdots+(a_n-b_n)v_n$,又因为$v_1,v_2,\cdots,v_n$线性无关,故$a_1-b_1,a_2-b_2,\cdots,a_n-b_n$均为$0$.
+    
+    \noindent 因而$a_i=b_i,i=1,2,3,\cdots,n$.
+    
+    \noindent 综上,不存在具有两种不同的线性组合的向量$\beta \in V$.\\
+    
+
+    \noindent 必要性:\\
+\end{proof}
+
+\noindent 事实上,这一定理是和下文将定义的基具有内在的一致性. 但在谈论基之前,我们需要继续对线性无关这一概念进行一些工具性的补充,这将有助于实际的数学证明.
+
+\begin{lemma}
+    设$v_1,v_2,\cdots,v_n$是向量空间$V$中的一个线性相关的向量组,则存在$j\in \{1,2,3,\cdots,n\}$使得:
+    \begin{enumerate}
+        \item $v_j\in \mbox{span}(v_1,v_2,\cdots,v_{j-1})$;
+        \item 从$v_1,v_2,\cdots,v_n$中去掉$v_j$,剩余组张成的空间等于原本的张成空间$\mbox{span}(v_1,v_2,\cdots,v_n)$.
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    TBW\\
+\end{proof}
+
+\noindent 这一引理在理论上建立起来简化向量组的可能性,因此相当重要.\\
+
+\noindent 下面将介绍一些推论,这些推论在本文建立的向量空间的理论中并不占据核心地位,但某些问题中也是有用的.
+
+\begin{corollary}
+    在有限维向量空间中,线性无关的向量组的长度始终小于或等于其任意张成组的长度.
+\end{corollary}
+
+\begin{proof}
+    TBW\\
+\end{proof}
+
+
+\begin{corollary}
+    如果向量组$\alpha_1,\alpha_2,\cdots,\alpha_n$线性无关,则其部分组也线性无关.
+\end{corollary}
+\begin{proof}
+    TBW\\
+\end{proof}
+
+
+\begin{corollary}
+    如果$\gamma$可以由$\beta_1,\beta_2,\cdots,\beta_m$线性表示，并且$\beta_1,\beta_2,\cdots,\beta_m$可以被$\alpha_1,\alpha_2,\cdots,\alpha_n$线性表示，则$\gamma$可以被$\alpha_1,\alpha_2,\cdots,\alpha_n$线性表示.
+\end{corollary}
+\begin{proof}
+    TBW\\
+\end{proof}
+
+\newpage
+
+
+% --**--第三章--**--%
+\subsection{Base}
+\noindent 提要
+\begin{enumerate}
+    \item 基的定义和特点;
+    \item 基的长度不依赖于基的选取，具有恰当长度的张成组是基;
+    \item 向量空间的任意张成组都可以化简成基;
+    \item 有限维向量空间有基;
+    \item 线性无关组可以补充为基;
+    \item 和空间的维数公式.
+\end{enumerate}
+
+\subsubsection{Base}
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+
+\end{document}

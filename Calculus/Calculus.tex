@@ -1,0 +1,162 @@
+\documentclass{article}
+\usepackage{geometry}
+\geometry{a4paper}
+\usepackage{ctex}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{tikz-cd}
+\usepackage{ytableau}
+\usepackage[all]{xy}
+\setcounter{section}{0}
+
+
+\pagestyle{plain}
+\marginparwidth    0pt
+\oddsidemargin     45pt
+\evensidemargin    45pt
+\topmargin         0pt
+\textheight       21cm
+\textwidth         13.5cm
+
+\newtheorem{definition}{定义}[subsection]
+\newtheorem{lemma}{引理}[subsection]
+\newtheorem{theorem}{定理}[subsection]
+\newtheorem{example}{例}[subsection]
+\newtheorem{corollary}{推论}[subsection]
+\newtheorem{proposition}{命题}[subsection]
+\newtheorem{problem}{问题}[subsection]
+\newtheorem{exer}{习题}[subsection]
+\newtheorem{conj}{猜想}[subsection]
+
+\title{求导练习}
+\author{Liu Xinyi}
+\date{\today}
+
+
+
+\begin{document}
+    
+\maketitle
+\begin{abstract}
+    为微积分求导练习而作
+\end{abstract}
+\newpage
+
+\section{微分运算}
+
+\subsection{导数的定义}
+\begin{definition}
+    设函数$f$在点$x_0$的近旁有定义,如果极限
+    $$
+    \lim_{h\to 0}\frac{f(x_0+h)-f(x_0)}{h}
+    $$
+    存在且有限,则称这个极限为函数$f$在点$x_0$的\textbf{导数},记作$f'(x_0)$,并称函数$f$在$x_0$\textbf{可导}.
+\end{definition}
+
+\noindent 类似于左连续和右连续,导数也可以定义左导数和右导数,分别记作$f'_-(x_0)$和$f'_+(x_0)$.\\
+
+\noindent 对于一个定义在区间$(a,b)$上的函数$f$,如果对所有$x\in (a,b)$,函数$f$在点$x_0$可导,则称函数$f$在$(a,b)$上可导,另外如果函数$f$在端点$a$有右导数,或者在端点$b$处有左导数,则称函数$f$在$[a,b)$上可导或者在$(a,b]$上可导.\\
+
+
+\begin{theorem}
+    若函数$f$在$x_0$处可导,则$f$在$x_0$处连续.
+\end{theorem}
+\noindent 这一定理通常会被编成口诀“可导的一定连续,连续的不一定可导”.\\
+
+\newpage
+
+\begin{exer}
+    设函数$f$在$x=0$处可导,且$f(0)=0$.求极限
+    $$
+    \lim_{x\to 0}\frac{f(x)}{x}.\\
+    $$
+\end{exer}
+\vspace*{100pt}
+
+
+\begin{exer}
+    设函数$f$在$x=0$处可导,且$a_n\to 0^-,b_n \to 0^+(n\to +\infty)$.证明:
+    $$
+    \lim_{n\to \infty}\frac{f(b_n)-f(a_n)}{b_n-a_n}=f'(0).\\
+    $$
+\end{exer}
+\vspace*{100pt}
+
+\begin{exer}
+    设$f$是偶函数且在$x=0$可导.证明:$f'(0)=0$.\\
+\end{exer}
+\vspace*{100pt}
+
+\begin{exer}
+    设函数$f$在$x_0$可导,证明:
+    $$
+    \lim_{h\to 0}\frac{f(x_0+h)-f(x_0-h)}{2h}=f'(x_0).\\
+    $$
+\end{exer}
+\newpage
+
+
+\begin{exer}
+    设函数$f$在$x=a$可导,且$f(a)\neq 0$.求数列极限
+    $$
+    \lim_{n\to\infty}(\frac{f(a+\frac1n)}{f(a)})^n.\\
+    $$
+\end{exer}
+\vspace*{100pt}
+
+
+
+\begin{exer}
+    设$f(x)=x(x-1)^2(x-2)^3$.求$f'(0),f'(1),f'(2)$.\\
+\end{exer}
+\vspace*{120pt}
+
+
+\begin{exer}
+    尝试构造一个函数f,它在$(-\infty,+\infty)$上处处不可导,但
+    $$
+    \lim_{n\to \infty}n(f(x+\frac1n)-f(x))
+    $$
+    处处存在.\\
+\end{exer}
+\vspace*{80pt}
+
+\newpage
+
+
+\noindent 在提出定义之后,我们就能对具体的问题进行计算.解决关于求导的计算问题,需要两种技术:公式和求导法则.
+
+\subsection{求导公式}
+
+\begin{enumerate}
+    \item $c'=0$,
+    \item $(x^{\alpha})'=\alpha x^{\alpha-1}$,
+    \item $(e^x)'=e^x$,
+    \item $(a^x)'=\ln a \cdot a^x$,
+    \item $(\log_ax)'=\frac1{x\ln a}$,
+    \item $(\ln x)'=\frac1x$,
+    \item $(\sin x)'=\cos x$,
+    \item $(\cos x)'=-\sin x$,
+    \item $(\tan x)'=\frac1{\cos^2 x}$,
+    \item $(\cot x)'=-\frac1{\sin^2 x}$,
+    \item $(\arcsin x)'=\frac1{\sqrt{1-x^2}}$,
+    \item $(\arccos x)'=-\frac1{\sqrt{1-x^2}}$,
+    \item $(\arctan x)'=\frac1{1+x^2}$,
+    \item \textbf{(arcot x)'}$=\frac1{1+x^2}$,
+
+\end{enumerate}
+
+\newpage
+
+\subsection{求导法则}
+\begin{enumerate}
+    \item 四则运算法则
+    \item 链式法则
+    \item 反函数求导法则
+    \item 洛必达法则
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,280 @@
+\documentclass{article}
+\usepackage{geometry}
+\geometry{a4paper}
+\usepackage{ctex}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{tikz-cd}
+\usepackage{ytableau}
+\usepackage[all]{xy}
+\setcounter{section}{-1}
+
+
+
+\pagestyle{plain}
+\marginparwidth    0pt
+\oddsidemargin     45pt
+\evensidemargin    45pt
+\topmargin         0pt
+\textheight       21cm
+\textwidth         13.5cm
+
+\newtheorem{definition}{定义}[subsection]
+\newtheorem{lemma}{引理}[subsection]
+\newtheorem{theorem}{定理}[subsection]
+\newtheorem{example}{例}[subsection]
+\newtheorem{corollary}{推论}[subsection]
+\newtheorem{proposition}{命题}[subsection]
+\newtheorem{problem}{问题}[subsection]
+\newtheorem{exer}{习题}[subsection]
+\newtheorem{conj}{猜想}[subsection]
+
+\title{Differential Calculus\\微分学}
+\author{Zimmer Abdeeglr}
+\date{\today}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+    为解决求导问题而作。具体细节，思路有待填充
+
+    研究重点1：$\lim (1+\frac1x)^x$
+\end{abstract}
+
+\newpage
+%----------------------------------%
+
+
+
+
+
+
+
+
+
+
+\section{(AR).Basic Concepts}
+\noindent 介绍使用的基本数学概念
+
+\newpage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%----------------------------------%
+\section{(AR).Real Number System}
+\noindent 介绍实数系的构造过程
+
+\newpage
+
+
+
+
+
+
+
+
+
+
+
+
+
+%----------------------------------%
+\section{(AR).Convergence Sequence}
+\noindent 介绍用数列极限表达的实数连续性定理
+
+
+\newpage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%----------------------------------%
+\section{(AR).Continus Function}
+
+\noindent 连续函数是一个数列——我自己说的.\\
+
+\noindent 讨论函数求极限的方法和连续函数的性质(在写出更具体的思路和研究对象后删除)\\
+%\newpage
+
+
+
+\subsection{函数的收敛与发散的定义}
+\newpage
+
+\subsection{连续函数的研究}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+
+
+
+
+
+
+
+
+
+
+
+%----------------------------------%
+\section{(AR).Calculus}
+
+\noindent 为了解决导数的计算问题,我们需要两类工具,一类是具体的关于各种常见函数的求导公式,需要熟记,另一类是抽象的求导法则,这位求解复杂函数的导数提供了逐步求导的原理.\\
+
+\noindent 首先我们可以从定义出发,来证明一些基本的求导公式：
+
+\begin{enumerate}
+    \item $c'=0$,
+    \item $(x^{\alpha})'=\alpha x^{\alpha-1}$,
+    \item $(e^x)'=e^x$,
+    \item $(a^x)'=\ln a \cdot a^x$,
+    %\item $(\log_ax)'=\frac1{x\ln a}$,
+    %\item $(\ln x)'=\frac1x$,
+    \item $(\sin x)'=\cos x$,
+    \item $(\cos x)'=-\sin x$,\\
+    %\item $(\tan x)'=\frac1{\cos^2 x}$,
+    %\item $(\cot x)'=-\frac1{\sin^2 x}$,
+    %\item $(\arcsin x)'=\frac1{\sqrt{1-x^2}}$,
+    %\item $(\arccos x)'=-\frac1{\sqrt{1-x^2}}$,
+    %\item $(\arctan x)'=\frac1{1+x^2}$,
+    %\item \textbf{(arcot x)'}$=\frac1{1+x^2}$,
+\end{enumerate}
+
+\noindent 这些基本的求导公式是进一步的公式推导提供了基础,接下来要介绍求导的四则运算.\\
+
+\begin{theorem}
+    设函数$f$和$g$在点$x$上可导,那么$f\pm g$,$fg$也在$x$上可导.如果$g(x)\neq 0$,则$f/g$也在$x$上可导.
+
+    并且
+    \begin{enumerate}
+        \item $[f(x)\pm g(x)]'=f'(x)\pm g'(x)$;
+        \item $[f(x)\cdot g(x)]'=f(x)g(x)+f(x)g'(x)$;
+        \item $(\frac{f(x)}{g(x)})'=\frac{f(x)g(x)-f(x)g'(x)}{g^2(x)}$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    \noindent 最直观的证明方式可以参考3Blue1Brown的视频.
+\end{proof}
+
+\newpage
+
+\noindent 利用求导的四则运算,我们可以得到正切函数和余切函数的求导公式:
+
+\begin{align*}
+    (\tan x)'&=(\frac{\sin x}{\cos x})'\\
+    &=\frac{\cos^2 x+\sin^2 x}{\cos^2 x}\\
+    &=\frac{1}{\cos^2 x}\\
+    \\
+    (\cot x)'&=(\frac{\cos x}{\sin x})'\\
+    &=\frac{-\sin^ x - \cos^2 x}{\sin^2 x}\\
+    &=-\frac{1}{\sin^2 x}\\
+\end{align*}
+
+\noindent 函数除了能够四则运算之外,还有复合运算,因此也有求导的符合运算法则.这一法则被称为\textbf{链式法则}.
+
+\begin{theorem}[复合函数的求导]
+    设函数$g$在$t_0$可导,函数$f$在$x=g(t_0)$可导,则$f(g(x))$在$t_0$可导,并且
+    \begin{align*}
+        (f(g(t_0)))'=f'(g(t_0))g'(t_0).\\
+    \end{align*}
+\end{theorem}
+
+\noindent 第三个求导法则是反函数求导法则.
+
+\begin{theorem}[反函数的求导]
+    设$y=f(x)$在$x_0$的某个小邻域上连续且严格单调.如果它在$x_0$可导,并且$f'(x_0)\neq 0$,则反函数$x=f^{-1}(y)$在$y_0=f(x_0)$可导,并且
+    \begin{align*}
+        (f^{-1})'(y_0)=\frac1{f'(x_0)}.\\
+    \end{align*}
+\end{theorem}
+
+
+
+
+
+\newpage
+
+
+
+\section{(AR).The Crown of Differential Calculus}
+\noindent 介绍微分中值定理和泰勒展开式
+
+
+
+\newpage
+
+
+
+\section{(ER).The Study on $e$}
+
+
+
+\newpage
+
+
+\section{(ER).不动点研究}
+
+\newpage
+
+
+\section{(ER).周期3混沌}
+
+\newpage
+
+
+
+
+
+
+\end{document}
